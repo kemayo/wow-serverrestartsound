@@ -23,7 +23,7 @@ function ns:CHAT_MSG_SYSTEM(event, msg)
 		PlaySoundFile("Sound\\Creature\\AlgalonTheObserver\\UR_Algalon_Berzerk01.wav", "Master")
 	end
 	if not msg:find("[SERVER]") then return end
-	if msg:find("Shutdown") or (msg:find("realm") and (msg:find("restart") or msg:find("maintenance"))) then
+	if msg:find("realm") and (msg:find("restart") or msg:find("maintenance")) then
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSDStart01.wav", "Master")
 	elseif msg:find(" 10:00") then
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD10.wav", "Master")
