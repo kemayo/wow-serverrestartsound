@@ -19,6 +19,9 @@ function ns:UnregisterEvent(...) for i=1,select("#", ...) do f:UnregisterEvent((
 --8/2 08:03:35.504  [SERVER] Restart in 10:00
 --8/2 08:03:35.504  [SERVER] Shutdown in 10:00
 function ns:CHAT_MSG_SYSTEM(event, msg)
+	if msg == IDLE_MESSAGE then
+		PlaySoundFile("Sound\\Creature\\AlgalonTheObserver\\UR_Algalon_Berzerk01.wav", "Master")
+	end
 	if not msg:find("[SERVER]") then return end
 	if msg:find("Shutdown") or (msg:find("realm") and (msg:find("restart") or msg:find("maintenance"))) then
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSDStart01.wav", "Master")
@@ -26,6 +29,10 @@ function ns:CHAT_MSG_SYSTEM(event, msg)
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD10.wav", "Master")
 	elseif msg:find(" 5:00") then
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD05.wav", "Master")
+	elseif msg:find(" 3:00") then
+		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD03.wav", "Master")
+	elseif msg:find(" 2:00") then
+		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD02.wav", "Master")
 	elseif msg:find(" 1:00") then
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD01.wav", "Master")
 	elseif msg:find(" 0:15") then
