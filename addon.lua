@@ -18,12 +18,16 @@ function ns:UnregisterEvent(...) for i=1,select("#", ...) do f:UnregisterEvent((
 --8/2 08:03:29.127  [SERVER] This realm is scheduled for a rolling restart. Thank you for your patience and understanding.
 --8/2 08:03:35.504  [SERVER] Restart in 10:00
 --8/2 08:03:35.504  [SERVER] Shutdown in 10:00
+local realmTimer = 0
 function ns:CHAT_MSG_SYSTEM(event, msg)
 	if msg == IDLE_MESSAGE then
 		PlaySoundFile("Sound\\Creature\\AlgalonTheObserver\\UR_Algalon_Berzerk01.wav", "Master")
 	end
 	if not msg:find("[SERVER]") then return end
-	if msg:find("realm") and (msg:find("restart") or msg:find("maintenance")) then
+	if GetTime() - realmTimer < 2 then return end
+	realmTimer = GetTime()
+	if msg:find("realm") and (msg:find("restart") and not msg:find("Cross") or msg:find("maintenance")) then
+		--Message contains both "realm" and "restart" or "realm" and "maintenance" in same sentence it's probably the right message
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSDStart01.wav", "Master")
 	elseif msg:find(" 10:00") then
 		PlaySoundFile("Sound\\Creature\\ArchivumSystem\\UR_Archivum_MimironSD10.wav", "Master")
