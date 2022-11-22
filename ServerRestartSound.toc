@@ -1,4 +1,4 @@
-## Interface: 80200
+## Interface: 100002
 
 ## Title: ServerRestartSound
 ## Author: Kemayo
