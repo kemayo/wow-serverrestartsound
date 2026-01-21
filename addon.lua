@@ -21,6 +21,7 @@ function ns:UnregisterEvent(...) for i=1,select("#", ...) do f:UnregisterEvent((
 --/script ServerRestart:CHAT_MSG_SYSTEM("CHAT_MSG_SYSTEM", IDLE_MESSAGE)
 local realmTimer = 0
 function ns:CHAT_MSG_SYSTEM(event, msg)
+	if issecretvalue and issecretvalue(msg) then return end
 	if msg == IDLE_MESSAGE then
 		PlaySoundFile(543569, "Master") -- Sound\\Creature\\AlgalonTheObserver\\UR_Algalon_Berzerk01.ogg
 		return
